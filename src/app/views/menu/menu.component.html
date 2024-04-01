@@ -1,0 +1,61 @@
+<section class="relative">
+  <h1 class="text-2xl font-bold">Menu</h1>
+  <section class="flex flex-col bg-white rounded-md px-4 py-4 gap-2">
+    <div class="flex justify-between items-center">
+      <input
+        type="text"
+        id="email"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+        placeholder="Busrcar menu"
+      />
+
+      @if(idMenu == 0 || idMenu == undefined){
+      <button
+        class="flex flex-row justify-center items-center gap-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        (click)="showFormFn()"
+      >
+        Crear Categoría <ng-icon name="octPlus"></ng-icon>
+      </button>
+      }
+    </div>
+    @if (showForm) {
+    <div class="col-span-1">
+      <menu-form (addData)="addDataFn($event)"></menu-form>
+    </div>
+    }
+    <div class="w-full grid grid-cols-4 gap-3">
+      @if(idMenu>0){
+      <menu-unitario [idMenu]="idMenu" [menu]="menu() ?? []" /> } @else{ @for
+      (menu of menu(); track menu) {
+      <div
+        class="relative col-span-1 h-80 shadow bg-slate-200 rounded-md flex flex-col overflow-hidden"
+      >
+        <div class="w-full h-full">
+          <img
+            srcset="data:{{menu.imagen_plato}}"
+            class="w-full h-full object-cover"
+            alt=""
+          />
+        </div>
+        <div
+          class="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-slate-50/0 to-slate-900/90 p-2 flex items-end"
+        >
+          <div class="flex flex-col gap-2">
+            <h5 class="text-white font-bold">{{ menu.nombre_plato }}</h5>
+
+            <p class="text-white text-wrap text-sm">
+              {{ menu.descripcion_plato }}
+              <button
+                (click)="enviarPlato(menu.id)"
+                class="text-cyan-500 text-sm"
+              >
+                Ver Detalles
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      } }
+    </div>
+  </section>
+</section>

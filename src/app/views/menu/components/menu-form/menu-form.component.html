@@ -1,0 +1,15 @@
+<!-- //cSpell:disable
+dark:bg-slate-700
+-->
+<!-- {{ form.getRawValue() | json }} -->
+<div class="max-w-sm mx-auto px-1 py-2 rounded-md" [formGroup]="form">
+    <text [label]="'Nombre'" placeholder="Ingrese el nombre de la categoria" [fGroup]="form" controlName="nombre_plato" />
+    <text [label]="'Descripcion'" placeholder="Ingrese la descripcion de la categoria" [fGroup]="form" controlName="descripcion_plato" />
+    <text [label]="'Precio'" placeholder="" [fGroup]="form" controlName="precio_venta" />
+    <text [label]="'Imagen'" placeholder="" [fGroup]="form" controlName="imagen_plato" />
+
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        (click)="saveData()">
+    Enviar
+  </button>
+</div>
